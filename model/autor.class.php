@@ -35,7 +35,19 @@ class Autor
     
     public function get($id)
     {
-        //TODO
+        try{
+            $sql = "SELECT * FROM AUTORS where ID_AUT = $id";
+            $stm=$this->conn->prepare($sql);
+            $stm->execute();
+            $row=$stm->fetch();
+            $this->resposta->SetDades($row);
+            $this->resposta->setCorrecta(true);
+            return $this->resposta;
+
+        }catch(Exception $e){
+            $this->resposta->setCorrecta(false, "Error get ID: ".$e->getMessage());
+            return $this->resposta;
+        }
     }
 
     
