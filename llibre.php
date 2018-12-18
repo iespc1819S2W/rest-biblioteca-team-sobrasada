@@ -1,10 +1,10 @@
 <?php
 // get autor
  $base = __DIR__;
- require_once("$base/model/autor.class.php");
- $autor=new Autor();
- $id_aut=$_GET["id"];
- $res=$autor->get($id_aut);
+ require_once("$base/model/llibre.class.php");
+ $llibre=new Llibre();
+ $id_llib=$_GET["id"];
+ $res=$llibre->get($id_llib);
  header('Content-type: application/json');
  echo json_encode($res);
 

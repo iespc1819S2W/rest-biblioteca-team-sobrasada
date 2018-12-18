@@ -1,15 +1,14 @@
 <?php
 //
  $base = __DIR__;
- require_once("$base/model/autor.class.php");
- $autor=new Autor();
- if (isset($_POST["nom_aut"])) {
-     $nom_aut=$_POST["nom_aut"];
-     $nacionalitat=isset($_POST["nacionalitat"])?$_POST["nacionalitat"]:'';
-     $res=$autor->insert(array("nom_aut"=>$nom_aut,"fk_nacionalitat"=>$nacionalitat));
+ require_once("$base/model/llibre.class.php");
+ $llibre=new Llibre();
+ if (isset($_POST["titol"])) {
+     $titol=$_POST["titol"];
+     $res=$titol->insert(array("titol"=>$titol));
  } else {
      $res=new Resposta();
-     $res->SetCorrecta(false,"nom_aut requerit");
+     $res->SetCorrecta(false,"titol requerit");
  }
  header('Content-type: application/json');
  echo json_encode($res); 
