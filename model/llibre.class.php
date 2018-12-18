@@ -4,7 +4,7 @@ $base = __DIR__ . '/..';
 require_once("$base/lib/resposta.class.php");
 require_once("$base/lib/database.class.php");
 
-class Autor {
+class Llibre {
 
     private $conn;       //connexió a la base de dades (PDO)
     private $resposta;   // resposta
@@ -35,22 +35,20 @@ class Autor {
 
     public function insert($data) {
         try {
-            $sql = "SELECT max(id_aut) as N from autors";
+            $sql = "SELECT max(id_llib) as N from llibres";
             $stm = $this->conn->prepare($sql);
             $stm->execute();
             $row = $stm->fetch();
-            $id_aut = $row["N"] + 1;
-            $nom_aut = $data['nom_aut'];
-            $fk_nacionalitat = $data['fk_nacionalitat'];
+            $id_llib = $row["N"] + 1;
+            $titol = $data['titol'];
 
-            $sql = "INSERT INTO autors
-                            (id_aut,nom_aut,fk_nacionalitat)
-                            VALUES (:id_aut,:nom_aut,:fk_nacionalitat)";
+            $sql = "INSERT INTO llibres
+                            (id_llib,titol)
+                            VALUES (:id_llib,:titol)";
 
             $stm = $this->conn->prepare($sql);
-            $stm->bindValue(':id_aut', $id_aut);
-            $stm->bindValue(':nom_aut', $nom_aut);
-            $stm->bindValue(':fk_nacionalitat', !empty($fk_nacionalitat) ? $fk_nacionalitat : NULL, PDO::PARAM_STR);
+            $stm->bindValue(':id_llib', $id_llib);
+            $stm->bindValue(':titol', $titol);
             $stm->execute();
 
             $this->resposta->setCorrecta(true);
