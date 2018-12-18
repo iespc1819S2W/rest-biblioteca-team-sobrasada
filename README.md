@@ -1,5 +1,4 @@
 # rest-biblioteca-team-sobrasada
-rest-biblioteca-team-sobrasada created by GitHub Classroom<br>
 Llegir tots els llibres. (GET) jordi<br>
 Llegir un llibre a partir de la clau primària. (GET) miguel<br>
 Llegir un llibre amb filtres i ordenació (GET) xavi<br>
