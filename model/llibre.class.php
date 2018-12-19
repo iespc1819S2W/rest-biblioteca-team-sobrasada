@@ -4,7 +4,7 @@ $base = __DIR__ . '/..';
 require_once("$base/lib/resposta.class.php");
 require_once("$base/lib/database.class.php");
 
-class Autor {
+class Llibre {
 
     private $conn;       //connexió a la base de dades (PDO)
     private $resposta;   // resposta
@@ -30,7 +30,19 @@ class Autor {
     }
 
     public function get($id) {
-        //TODO
+        try{
+            $sql = "SELECT * FROM LLIBRES where ID_LLIB = $id";
+            $stm=$this->conn->prepare($sql);
+            $stm->execute();
+            $row=$stm->fetch();
+            $this->resposta->SetDades($row);
+            $this->resposta->setCorrecta(true);
+            return $this->resposta;
+
+        }catch(Exception $e){
+            $this->resposta->setCorrecta(false, "Error get ID: ".$e->getMessage());
+            return $this->resposta;
+        }
     }
 
     public function insert($data) {
