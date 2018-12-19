@@ -17,9 +17,9 @@ class Llibre {
     public function allAutorllibres($id){
         try{
             $id_llib = $id;
-            //select nom_aut from autors,llibres,lli_aut where id_aut = fk_idaut and id_llib = fk_idllib and id_llib = 1
             //select * from lli_aut inner join llibres on fk_idllib = id_llib inner join autors on fk_idaut = id_aut where id_llib = :id_llib;
-            $sql = "SELECT * FROM AUTORS,LLIBRES,LLI_AUT WHERE ID_AUT = FK_IDAUT AND ID_LLIB = FK_IDLLIB and ID_LLIB = :id_llib";
+            //$sql = "SELECT * FROM AUTORS,LLIBRES,LLI_AUT WHERE ID_AUT = FK_IDAUT AND ID_LLIB = FK_IDLLIB and ID_LLIB = :id_llib";
+            $sql = "SELECT * FROM LLI_AUT INNER JOIN LLIBRES ON FK_IDLLIB = ID_LLIB INNER JOIN AUTORS ON FK_IDAUT = ID_AUT WHERE ID_LLIB = :id_llib";
             $stm = $this->conn->prepare($sql);
             $stm->bindValue(":id_llib",$id_llib);
             $stm->execute();
