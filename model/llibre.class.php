@@ -31,8 +31,10 @@ class Llibre {
 
     public function get($id) {
         try{
-            $sql = "SELECT * FROM LLIBRES where ID_LLIB = $id";
+            $id_llib = $id;
+            $sql = "SELECT * FROM LLIBRES where ID_LLIB = :id_llib";
             $stm=$this->conn->prepare($sql);
+            $stm->bindValue(":id_llib",$id_llib);
             $stm->execute();
             $row=$stm->fetch();
             $this->resposta->SetDades($row);
