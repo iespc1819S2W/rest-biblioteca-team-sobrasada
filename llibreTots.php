@@ -1,5 +1,5 @@
 <?php
-// get autor
+// get tots llibres
  $base = __DIR__;
  require_once("$base/model/llibre.class.php");
  $llibre=new Llibre();
