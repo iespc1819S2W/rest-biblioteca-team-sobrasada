@@ -28,4 +28,47 @@ class Llibre {
             return $this->resposta;
         }
     }
+
+    public function get($id) {
+        //TODO
+    }
+
+    public function insert($data) {
+        try {
+            $sql = "SELECT max(id_llib) as N from llibres";
+            $stm = $this->conn->prepare($sql);
+            $stm->execute();
+            $row = $stm->fetch();
+            $id_llib = $row["N"] + 1;
+            $titol = $data['titol'];
+
+            $sql = "INSERT INTO llibres
+                            (id_llib,titol)
+                            VALUES (:id_llib,:titol)";
+
+            $stm = $this->conn->prepare($sql);
+            $stm->bindValue(':id_llib', $id_llib);
+            $stm->bindValue(':titol', $titol);
+            $stm->execute();
+
+            $this->resposta->setCorrecta(true);
+            return $this->resposta;
+        } catch (Exception $e) {
+            $this->resposta->setCorrecta(false, "Error insertant: " . $e->getMessage());
+            return $this->resposta;
+        }
+    }
+
+    public function update($data) {
+        // TODO
+    }
+
+    public function delete($id) {
+        // TODO
+    }
+
+    public function filtra($where, $orderby, $offset, $count) {
+        // TODO
+    }
+
 }
