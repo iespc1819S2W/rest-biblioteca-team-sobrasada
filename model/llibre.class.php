@@ -30,7 +30,21 @@ class Llibre {
     }
 
     public function get($id) {
-        //TODO
+        try{
+            $id_llib = $id;
+            $sql = "SELECT * FROM LLIBRES where ID_LLIB = :id_llib";
+            $stm=$this->conn->prepare($sql);
+            $stm->bindValue(":id_llib",$id_llib);
+            $stm->execute();
+            $row=$stm->fetch();
+            $this->resposta->SetDades($row);
+            $this->resposta->setCorrecta(true);
+            return $this->resposta;
+
+        }catch(Exception $e){
+            $this->resposta->setCorrecta(false, "Error get ID: ".$e->getMessage());
+            return $this->resposta;
+        }
     }
 
     public function insert($data) {
