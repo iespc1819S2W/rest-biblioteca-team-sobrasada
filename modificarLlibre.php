@@ -9,20 +9,22 @@ if (isset($_POST["idLlibre"])) {
     $llocEdicio=isset($_POST["llocEdicio"])?$_POST["llocEdicio"]:null;
     $anyEdicio=isset($_POST["anyEdicio"])?$_POST["anyEdicio"]:null;
     $descripcio=isset($_POST["descripcio"])?$_POST["descripcio"]:null;
-    $isbn=isset($_POST["isbn"])?$_POST["isbn"]:'';
+    $isbn=isset($_POST["isbn"])?$_POST["isbn"]:null;
     $deplegal=isset($_POST["deplegal"])?$_POST["deplegal"]:null;
     $signtop=isset($_POST["signtop"])?$_POST["signtop"]:null;
-    $databaixa=isset($_POST["databaixa"])?$_POST["databaixa"]:null;
+    $dataBaixa=isset($_POST["dataBaixa"])?$_POST["dataBaixa"]:null;
     $motiuBaixa=isset($_POST["motiuBaixa"])?$_POST["motiuBaixa"]:null;
     $fkCollecio=isset($_POST["fkCollecio"])?$_POST["fkCollecio"]:null;
     $fkDepartament=isset($_POST["fkDepartament"])?$_POST["fkDepartament"]:null;
     $fkIdEditor=isset($_POST["fkIdEditor"])?$_POST["fkIdEditor"]:null;
     $fkLlengua=isset($_POST["fkLlengua"])?$_POST["fkLlengua"]:null;
     $imatge=isset($_POST["imatge"])?$_POST["imatge"]:null;
-    $res=$autor->modificarLlibre(array("idLlibre"=>$idLlibre,"titol"=>$titol,"numEdicio"=>$numEdicio,
+
+    $res=$llibre->modificaLlibre(array("idLlibre"=>$idLlibre,"titol"=>$titol,"numEdicio"=>$numEdicio,
     "llocEdicio"=>$llocEdicio,"anyEdicio"=>$anyEdicio,"descripcio"=>$descripcio,"isbn"=>$isbn,
-    "deplegal"=>$deplegal,"signtop"=>$signtop,"databaixa"=>$databaixa,"motiuBaixa"=>$motiuBaixa,
+    "deplegal"=>$deplegal,"signtop"=>$signtop,"dataBaixa"=>$dataBaixa,"motiuBaixa"=>$motiuBaixa,
     "fkCollecio"=>$fkCollecio,"fkDepartament"=>$fkDepartament,"fkIdEditor"=>$fkIdEditor,"fkLlengua"=>$fkLlengua,"imatge"=>$imatge));
+
 } else {
     $res=new Resposta();
     $res->SetCorrecta(false,"idLlibre requerit");

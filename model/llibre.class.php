@@ -61,80 +61,76 @@ class Llibre {
 
     public function modificaLlibre($dades) {
         try{ 
-            /*$sql = "update LLIBRES SET TITOL=:titol , :numEdicio , :llocEdicio , 
-        :anyEdicio , :descripcio , :isbn , :deplegal , :signtop , 
-        :databaixa, :motiuBaixa , :fkCollecio , :fkDepartament , 
-        :fkIdEditor , :fkLlengua , :imatge 
-        WHERE ID_LLIB = :idLlibre";*/
-
         /*PROBLEMA, he de montar l'sql perque si pos directament a l'sql el nom de les columnes i el vindvalues, 
         si li pas per post 3 columnes, borrará les demés*/
         $sql = "update LLIBRES SET ";
         $strAfegir = "";
+        $stm = $this->conn->prepare($sql);
         if($dades["titol"] != null){
             $strAfegir .= "TITOL = :titol,";
-            $stm->bindValue(':titol', $dades["titol"]);
+            $stm->bindValue(':titol', $dades["titol"],PDO::PARAM_STR);
         }
         if($dades["numEdicio"] != null){
             $strAfegir .= "NUMEDICIO = :numEdicio, ";
-            $stm->bindValue(':numEdicio', $dades["numEdicio"]);
+            $stm->bindValue(':numEdicio', $dades["numEdicio"],PDO::PARAM_STR);
         }
         if($dades["llocEdicio"] != null){
             $strAfegir .= "LLOCEDICIO = :llocEdicio, ";
-            $stm->bindValue(':llocEdicio', $dades["llocEdicio"]);
+            $stm->bindValue(':llocEdicio', $dades["llocEdicio"],PDO::PARAM_STR);
         }
         if($dades["anyEdicio"] != null){
             $strAfegir .= "ANYEDICIO = :anyEdicio, ";
-            $stm->bindValue(':anyEdicio', $dades["anyEdicio"]);
+            $stm->bindValue(':anyEdicio', $dades["anyEdicio"],PDO::PARAM_INT);
         }
         if($dades["descripcio"] != null){
             $strAfegir .= "DESCRIP_LLIB = :descripcio, ";
-            $stm->bindValue(':descripcio', $dades["descripcio"]);
+            $stm->bindValue(':descripcio', $dades["descripcio"],PDO::PARAM_STR);
         }
         if($dades["isbn"] != null){
             $strAfegir .= "ISBN = :isbn, ";
-            $stm->bindValue(':isbn', $dades["isbn"]);
+            $stm->bindValue(':isbn', $dades["isbn"],PDO::PARAM_STR);
         }
         if($dades["deplegal"] != null){
             $strAfegir .= "DEPLEGAL = :deplegal, ";
-            $stm->bindValue(':deplegal', $dades["deplegal"]);
+            $stm->bindValue(':deplegal', $dades["deplegal"],PDO::PARAM_STR);
         }
         if($dades["signtop"] != null){
             $strAfegir .= "SIGNTOP = :signtop, ";
-            $stm->bindValue(':signtop', $dades["signtop"]);
+            $stm->bindValue(':signtop', $dades["signtop"],PDO::PARAM_STR);
         }
-        if($dades["databaixa"] != null){
-            $strAfegir .= "DATBAIXA_LLIB = :databaixa, ";
-            $stm->bindValue(':databaixa', $dades["databaixa"]);
+        if($dades["dataBaixa"] != null){
+            $strAfegir .= "DATBAIXA_LLIB = :dataBaixa, ";
+            $stm->bindValue(':dataBaixa', $dades["dataBaixa"],PDO::PARAM_STR);
         }
         if($dades["motiuBaixa"] != null){
             $strAfegir .= "MOTIUBAIXA = :motiuBaixa, ";
-            $stm->bindValue(':motiuBaixa', $dades["motiuBaixa"]);
+            $stm->bindValue(':motiuBaixa', $dades["motiuBaixa"],PDO::PARAM_STR);
         }
         if($dades["fkCollecio"] != null){
             $strAfegir .= "FK_COLLECIO = :fkCollecio, ";
-            $stm->bindValue(':fkCollecio', $dades["fkCollecio"]);
+            $stm->bindValue(':fkCollecio', $dades["fkCollecio"],PDO::PARAM_STR);
         }
         if($dades["fkDepartament"] != null){
             $strAfegir .= "FK_DEPARTAMENT = :fkDepartament, ";
-            $stm->bindValue(':fkDepartament', $dades["fkDepartament"]);
+            $stm->bindValue(':fkDepartament', $dades["fkDepartament"],PDO::PARAM_STR);
         }
         if($dades["fkIdEditor"] != null){
             $strAfegir .= "FK_IDEDIT = :fkIdEditor, ";
-            $stm->bindValue(':fkIdEditor', $dades["fkIdEditor"]);
+            $stm->bindValue(':fkIdEditor', $dades["fkIdEditor"],PDO::PARAM_INT);
         }
         if($dades["fkLlengua"] != null){
             $strAfegir .= "FK_LLENGUA = :fkLlengua, ";
-            $stm->bindValue(':fkLlengua', $dades["fkLlengua"]);
+            $stm->bindValue(':fkLlengua', $dades["fkLlengua"],PDO::PARAM_STR);
         }
         if($dades["imatge"] != null){
-            $strAfegir .= "IMG_LLIB = :imatge, ";
-            $stm->bindValue(':imatge', $dades["imatge"]);
+            $strAfegir .= "IMG_LLIB = :imatge ";
+            $stm->bindValue(':imatge', $dades["imatge"],PDO::PARAM_STR);
         }
         if($dades["idLlibre"] != null){
             $strAfegir .= "WHERE ID_LLIB = :idLlibre";
-            $stm->bindValue(':idLlibre', $dades["idLlibre"]);
+            $stm->bindValue(':idLlibre', $dades["idLlibre"],PDO::PARAM_STR);
         }
+        $sql .= $strAfegir;
         $stm = $this->conn->prepare($sql);
         $stm->execute();
         $this->resposta->setCorrecta(true);
