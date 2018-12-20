@@ -14,10 +14,10 @@ class Llibre {
         $this->resposta = new Resposta();
     }
 
-    public function getAll($orderby = "id_llibre") {
+    public function getAll($orderby = "id_llib") {
         try {
             $result = array();
-            $stm = $this->conn->prepare("SELECT id_aut,nom_aut,fk_nacionalitat FROM autors ORDER BY $orderby");
+            $stm = $this->conn->prepare("SELECT * FROM LLIBRES ORDER BY $orderby");
             $stm->execute();
             $tuples = $stm->fetchAll();
             $this->resposta->setDades($tuples);    // array de tuples
