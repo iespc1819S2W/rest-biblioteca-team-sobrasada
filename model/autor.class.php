@@ -29,18 +29,20 @@ class Autor {
         }
     }
 
-    public function get($id) {
-        try {
-            $result = array();
-            $stm = $this->conn->prepare("SELECT id_aut,nom_aut,fk_nacionalitat FROM AUTORS WHERE ID_AUT = :id_aut ORDER BY id_aut");
-            $stm->bindValue(':id_aut', $id);
+
+    public function get($id)
+    {
+        try{
+            $sql = "SELECT * FROM AUTORS where ID_AUT = $id";
+            $stm=$this->conn->prepare($sql);
             $stm->execute();
-            $tuples = $stm->fetch();
-            $this->resposta->setDades($tuples);    // array de tuples
-            $this->resposta->setCorrecta(true);       // La resposta es correcta        
+            $row=$stm->fetch();
+            $this->resposta->SetDades($row);
+            $this->resposta->setCorrecta(true);
             return $this->resposta;
-        } catch (Exception $e) {   // hi ha un error posam la resposta a fals i tornam missatge d'error
-            $this->resposta->setCorrecta(false, $e->getMessage());
+
+        }catch(Exception $e){
+            $this->resposta->setCorrecta(false, "Error get ID: ".$e->getMessage());
             return $this->resposta;
         }
     }
