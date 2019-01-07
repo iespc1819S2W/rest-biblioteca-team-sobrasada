@@ -6,7 +6,7 @@ Llegir un llibre a partir de la clau primària. (GET) miguel FET<br>
 Llegir un llibre amb filtres i ordenació (GET) xavi<br>
 Alta d’un llibre. (POST)  xavi FET<br><br>
 Modificar un llibre (POST) alex FET<br>
-modificarLlibre.php
+modificarLlibre.php<br>
 Parametros:<br>
 idLlibre exemple:1<br>
 titol exemple:"titulo de libro"<br>
@@ -26,7 +26,7 @@ fkLlengua exemple:"Catalana"<br>
 imatge exemple:"/path/to/image"<br>
 
 Borrar un llibre(POST)alex FET<br>
-borrarLlibre.php
+borrarLlibre.php<br>
 idLlibre exemple:8202<br><br>
 Llegir tots els autors d’un llibre. (GET )miguel FET<br>
 Alta d’un nou autor d’un llibre (POST) jordi FET<br>
