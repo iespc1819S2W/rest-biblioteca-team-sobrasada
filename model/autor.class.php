@@ -3,7 +3,7 @@
 $base = __DIR__ . '/..';
 require_once("$base/lib/resposta.class.php");
 require_once("$base/lib/database.class.php");
-
+//hola
 class Autor {
 
     private $conn;       //connexió a la base de dades (PDO)
