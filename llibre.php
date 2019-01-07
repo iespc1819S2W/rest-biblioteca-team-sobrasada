@@ -1,4 +1,3 @@
-
 <?php
 // get autor
  $base = __DIR__;
