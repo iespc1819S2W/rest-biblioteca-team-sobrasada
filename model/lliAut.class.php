@@ -7,6 +7,16 @@ require_once("$base/lib/database.class.php");
 
 class LliAut
 {
+
+    private $conn; //connexió a la base de dades (PDO)
+    private $resposta; // resposta
+
+    public function __CONSTRUCT()
+    {
+        $this->conn = Database::getInstance()->getConnection();
+        $this->resposta = new Resposta();
+    }
+
     public function insert($data)
     {
         try {
