@@ -4,8 +4,15 @@ llibreTots.php<br>
 <br>
 Llegir un llibre a partir de la clau primària. (GET) miguel FET<br>
 Llegir un llibre amb filtres i ordenació (GET) xavi<br>
-Alta d’un llibre. (POST)  xavi FET<br>
+Alta d’un llibre. (POST)  xavi FET<br><br>
 Modificar un llibre (POST) alex FET<br>
+Parametros:<br>
+idLlibre exemple:1<br>
+titol exemple: "string"<br>
+numEdicio exemple:1ª<br>
+llocEdicio exemple: "mallorca"<br>
+anyEdicio exemple: 2009 <br>
+descripcio exemple: "descripcio aleatoria" <br>
 Borrar un llibre(POST)alex FET<br>
 Llegir tots els autors d’un llibre. (GET )miguel FET<br>
 Alta d’un nou autor d’un llibre (POST) jordi FET<br>
