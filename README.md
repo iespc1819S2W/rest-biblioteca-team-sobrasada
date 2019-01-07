@@ -3,6 +3,9 @@ Llegir tots els llibres. (GET) jordi FET<br>
 llibreTots.php<br>
 <br>
 Llegir un llibre a partir de la clau primària. (GET) miguel FET<br>
+llibre.php<br>
+Parametros:<br>
+id exemple:1<br><br>
 Llegir un llibre amb filtres i ordenació (GET) xavi<br>
 Alta d’un llibre. (POST)  xavi FET<br><br>
 Modificar un llibre (POST) alex FET<br>
@@ -29,6 +32,9 @@ Borrar un llibre(POST)alex FET<br>
 borrarLlibre.php<br>
 idLlibre exemple:8202<br><br>
 Llegir tots els autors d’un llibre. (GET )miguel FET<br>
+autorsllibe.php<br>
+Parametros:<br>
+id exemple:1<br><br>
 Alta d’un nou autor d’un llibre (POST) jordi FET<br>
 autorLlibreAlta.php<br>
 Parametros:<br>
