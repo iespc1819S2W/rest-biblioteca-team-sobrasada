@@ -15,12 +15,11 @@ class Llibre
         $this->conn = Database::getInstance()->getConnection();
         $this->resposta = new Resposta();
     }
+    public function getAll($orderby = "id_llib") {
 
-    public function getAll($orderby = "id_llibre")
-    {
         try {
             $result = array();
-            $stm = $this->conn->prepare("SELECT id_aut,nom_aut,fk_nacionalitat FROM autors ORDER BY $orderby");
+            $stm = $this->conn->prepare("SELECT * FROM LLIBRES ORDER BY $orderby");
             $stm->execute();
             $tuples = $stm->fetchAll();
             $this->resposta->setDades($tuples); // array de tuples
@@ -32,9 +31,23 @@ class Llibre
         }
     }
 
-    public function get($id)
-    {
-        //TODO
+
+    public function get($id) {
+        try{
+            $id_llib = $id;
+            $sql = "SELECT * FROM LLIBRES where ID_LLIB = :id_llib";
+            $stm=$this->conn->prepare($sql);
+            $stm->bindValue(":id_llib",$id_llib);
+            $stm->execute();
+            $row=$stm->fetch();
+            $this->resposta->SetDades($row);
+            $this->resposta->setCorrecta(true);
+            return $this->resposta;
+
+        }catch(Exception $e){
+            $this->resposta->setCorrecta(false, "Error get ID: ".$e->getMessage());
+            return $this->resposta;
+        }
     }
 
     public function insert($data)
