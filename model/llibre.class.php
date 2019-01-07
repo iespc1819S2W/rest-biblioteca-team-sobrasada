@@ -113,7 +113,7 @@ class Llibre
 
             }
             if ($dades["fkCollecio"] != null) {
-                $strAfegir .= ", FK_COLLECIO = :fkCollecio";
+                $strAfegir .= ", FK_COLLECCIO = :fkCollecio";
 
             }
             if ($dades["fkDepartament"] != null) {
