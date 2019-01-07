@@ -7,4 +7,4 @@ Modificar un llibre (POST) alex FET<br>
 Borrar un llibre(POST)alex FET<br>
 Llegir tots els autors d’un llibre. (GET )miguel FET<br>
 Alta d’un nou autor d’un llibre (POST) jordi FET<br>
-Baixa d’un autor d’un determinat llibre (POST) jordi FETbr>
+Baixa d’un autor d’un determinat llibre (POST) jordi FET<br>
