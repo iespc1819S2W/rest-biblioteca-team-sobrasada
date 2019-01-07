@@ -12,7 +12,7 @@ $base = __DIR__;
  } else {
      echo $res->missatge;
  }
-$llibre->insert(array("titol"=>"Hola,que hace?"));
+$llibre->insert(array("TITOL"=>"Hola,que hace?", "NUMEDICIO" =>"HOls", "LLOCEDICIO"=>"", "ANYEDICIO"=>"", "DESCRIP_LLIB"=>"", "ISBN"=>"", "DEPLEGAL"=>"", "SIGNTOP"=>"", "DATBAIXA_LLIB"=>"", "MOTIUBAIXA"=>"", "FK_COLLECCIO"=>"", "FK_DEPARTAMENT"=>"", "FK_IDEDIT"=>"", "FK_LLENGUA"=>"", "IMG_LLIB"=>""));
  //$autor->insert(array("nom_aut"=>"Tomeu Campaner","fk_nacionalitat"=>"MURERA"));   //produira un error
  if (!$res->correcta) {
     echo "Error insertant";  // Error per l'usuari

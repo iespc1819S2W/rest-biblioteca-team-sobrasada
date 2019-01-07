@@ -7,4 +7,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^autor/all prova.php
 RewriteRule ^autor/alta autoralta.php
+RewriteRule ^llibre/alta llibreAlta.php
 RewriteRule ^llibre/([0-9]+) llibre.php?id=$1
