@@ -251,5 +251,50 @@ class Llibre
             return $this->resposta;
         }
     }
+    public function filtra($where, $orderby) {
+        try {
+            $buscar = true;
+            $limit = false;
+            $ntuplas = false;
+            $sql = "SELECT * from LLIBRES";
+            if (strlen($where) == 0) {
+                $buscar = false;
+            } else if (is_numeric($where)) {
+                $sql = $sql . " WHERE id_llib like :w";
+            } else {
+                $sql = $sql . " WHERE titol like :w";
+            }
 
+            if (strlen($orderby) == 0) {
+                
+            } else {
+                $orderby = filter_var($orderby, FILTER_SANITIZE_STRING);
+                $sql = $sql . " ORDER BY $orderby";
+            }
+            if ($count != "") {
+                $limit = true;
+                if ($offset != "") {
+                    $ntuplas = true;
+                    $sql = $sql . " limit :offset, :count";
+                } else {
+                    $sql = $sql . " limit :count";
+                }
+            }
+            $stm = $this->conn->prepare($sql);
+
+            if ($buscar) {
+                $stm->bindValue(':w', '%' . $where . '%');
+            }
+
+            $stm->execute();
+            $tuples = $stm->fetchAll();
+
+            $this->resposta->setDades($tuples);
+            $this->resposta->setCorrecta(true);
+            return $this->resposta;
+        } catch (Exeption $e) {
+            $this->resposta->setCorrecta(false, "Error insertant: " . $e->getMessage());
+            return $this->resposta;
+        }
+    }
 }
