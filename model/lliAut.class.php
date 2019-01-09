@@ -45,7 +45,7 @@ class LliAut {
             $this->resposta->setCorrecta(true);
             return $this->resposta;
         } catch (Exception $ex) {
-            $this->resposta->setCorrecta(false, "Error eliminant: " . $e->getMessage());
+            $this->resposta->setCorrecta(false, "Error eliminant: " . $ex->getMessage());
             return $this->resposta;
         }
     }
